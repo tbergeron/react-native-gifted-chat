@@ -74,7 +74,7 @@ export interface GiftedChatProps<TMessage extends IMessage = IMessage> {
     onPressAvatar?(user: User): void;
     onLongPressAvatar?(user: User): void;
     messageIdGenerator?(message?: TMessage): string;
-    onSend?(newMessages: TMessage[], messages: TMessage[]): void;
+    onSend?(messages: TMessage[]): void;
     onLoadEarlier?(): void;
     renderLoading?(): React.ReactNode;
     renderLoadEarlier?(props: LoadEarlierProps): React.ReactNode;
