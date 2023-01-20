@@ -22,6 +22,7 @@ import GiftedAvatar from './GiftedAvatar';
 import { IMessage, User, Reply, LeftRightStyle, MessageVideoProps, MessageAudioProps } from './Models';
 import { LightboxProps } from 'react-native-lightbox-v2';
 import { ActionSheetProviderRef } from '@expo/react-native-action-sheet';
+import TypingIndicator from './TypingIndicator';
 export interface GiftedChatProps<TMessage extends IMessage = IMessage> {
     messages?: TMessage[];
     isTyping?: boolean;
@@ -336,4 +337,4 @@ declare class GiftedChat<TMessage extends IMessage = IMessage> extends React.Com
     render(): JSX.Element;
 }
 export * from './Models';
-export { GiftedChat, Actions, Avatar, Bubble, SystemMessage, MessageImage, MessageText, Composer, Day, InputToolbar, LoadEarlier, Message, MessageContainer, Send, Time, GiftedAvatar, utils, };
+export { GiftedChat, Actions, Avatar, Bubble, SystemMessage, MessageImage, MessageText, Composer, Day, InputToolbar, LoadEarlier, Message, MessageContainer, Send, Time, GiftedAvatar, utils, TypingIndicator };

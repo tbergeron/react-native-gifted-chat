@@ -58,6 +58,7 @@ import {
 } from './Models'
 import { LightboxProps } from 'react-native-lightbox-v2'
 import { ActionSheetProviderRef } from '@expo/react-native-action-sheet'
+import TypingIndicator from './TypingIndicator'
 
 dayjs.extend(localizedFormat)
 
@@ -943,4 +944,5 @@ export {
   Time,
   GiftedAvatar,
   utils,
+  TypingIndicator
 }
