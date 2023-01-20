@@ -337,4 +337,4 @@ declare class GiftedChat<TMessage extends IMessage = IMessage> extends React.Com
     render(): JSX.Element;
 }
 export * from './Models';
-export { GiftedChat, Actions, Avatar, Bubble, SystemMessage, MessageImage, MessageText, Composer, Day, InputToolbar, LoadEarlier, Message, MessageContainer, Send, Time, GiftedAvatar, utils, TypingIndicator };
+export { GiftedChat, Actions, Avatar, Bubble, SystemMessage, MessageImage, MessageText, Composer, Day, InputToolbar, LoadEarlier, Message, MessageContainer, Send, Time, GiftedAvatar, utils, TypingIndicator, };

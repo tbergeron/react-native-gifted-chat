@@ -944,5 +944,5 @@ export {
   Time,
   GiftedAvatar,
   utils,
-  TypingIndicator
+  TypingIndicator,
 }

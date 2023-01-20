@@ -111,6 +111,7 @@ export function Composer({
         textInputStyle,
         {
           height: composerHeight,
+          paddingBottom: 15,
           ...Platform.select({
             web: {
               outlineWidth: 0,
