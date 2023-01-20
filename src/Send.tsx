@@ -61,7 +61,7 @@ export const Send = <TMessage extends IMessage = IMessage>({
 }: SendProps<TMessage>) => {
   const handleOnPress = useCallbackOne(() => {
     if (text && onSend) {
-      onSend({ text: text.trim() } as Partial<TMessage>, true)
+      onSend({ text: text.trim() } as Partial<TMessage>, false)
     }
   }, [text, onSend])
 
