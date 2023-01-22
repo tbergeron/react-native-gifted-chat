@@ -1,14 +1,16 @@
 import * as React from 'react'
-import { Animated, StyleSheet } from 'react-native'
+import { Animated } from 'react-native'
 import { TypingAnimation } from 'react-native-typing-animation'
 import { useUpdateLayoutEffect } from './hooks/useUpdateLayoutEffect'
 import Color from './Color'
 
 interface Props {
-  isTyping?: boolean
+  isTyping?: boolean;
+  backgroundColor?: string;
+  dotColor?: string;
 }
 
-const TypingIndicator = ({ isTyping }: Props) => {
+const TypingIndicator = ({ isTyping, backgroundColor, dotColor }: Props) => {
   const { yCoords, heightScale, marginScale } = React.useMemo(
     () => ({
       yCoords: new Animated.Value(200),
@@ -69,7 +71,11 @@ const TypingIndicator = ({ isTyping }: Props) => {
   return (
     <Animated.View
       style={[
-        styles.container,
+        {    
+          marginLeft: 8,
+          width: 45,
+          borderRadius: 15,
+          backgroundColor: backgroundColor ? backgroundColor : Color.leftBubbleBackground,},
         {
           transform: [
             {
@@ -86,20 +92,11 @@ const TypingIndicator = ({ isTyping }: Props) => {
           style={{ marginLeft: 6, marginTop: 7.2 }}
           dotRadius={4}
           dotMargin={5.5}
-          dotColor={'rgba(0, 0, 0, 0.38)'}
+          dotColor={dotColor ? dotColor : 'rgba(0, 0, 0, 0.38)'}
         />
       ) : null}
     </Animated.View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginLeft: 8,
-    width: 45,
-    borderRadius: 15,
-    backgroundColor: Color.leftBubbleBackground,
-  },
-})
 
 export default TypingIndicator
