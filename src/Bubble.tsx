@@ -518,21 +518,21 @@ export default class Bubble<
       backgroundGradientStyle,
     } = this.props
     return (
-      <LinearGradient
+      <View
         style={[
           styles[position].container,
           containerStyle && containerStyle[position],
         ]}
-        colors={[
-          backgroundGradientStyle && backgroundGradientStyle[position]
-            ? backgroundGradientStyle[position]!.backgroundGradientColor1
-            : null,
-          backgroundGradientStyle && backgroundGradientStyle[position]
-            ? backgroundGradientStyle[position]!.backgroundGradientColor2
-            : null,
-        ]}
       >
-        <View
+        <LinearGradient
+          colors={[
+            backgroundGradientStyle && backgroundGradientStyle[position]
+              ? backgroundGradientStyle[position]!.backgroundGradientColor1
+              : null,
+            backgroundGradientStyle && backgroundGradientStyle[position]
+              ? backgroundGradientStyle[position]!.backgroundGradientColor2
+              : null,
+          ]}
           style={[
             styles[position].wrapper,
             this.styledBubbleToNext(),
@@ -560,9 +560,9 @@ export default class Bubble<
               </View>
             </View>
           </TouchableWithoutFeedback>
-        </View>
+        </LinearGradient>
         {this.renderQuickReplies()}
-      </LinearGradient>
+      </View>
     )
   }
 }
