@@ -10,6 +10,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { GiftedChatContext } from './GiftedChatContext'
 import { QuickReplies, QuickRepliesProps } from './QuickReplies'
@@ -106,25 +107,25 @@ const DEFAULT_OPTION_TITLES = ['Copy Text', 'Cancel']
 
 export type RenderMessageImageProps<TMessage extends IMessage> = Omit<
   BubbleProps<TMessage>,
-  'containerStyle' | 'wrapperStyle'
+  'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'
 > &
   MessageImageProps<TMessage>
 
 export type RenderMessageVideoProps<TMessage extends IMessage> = Omit<
   BubbleProps<TMessage>,
-  'containerStyle' | 'wrapperStyle'
+  'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'
 > &
   MessageVideoProps<TMessage>
 
 export type RenderMessageAudioProps<TMessage extends IMessage> = Omit<
   BubbleProps<TMessage>,
-  'containerStyle' | 'wrapperStyle'
+  'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'
 > &
   MessageAudioProps<TMessage>
 
 export type RenderMessageTextProps<TMessage extends IMessage> = Omit<
   BubbleProps<TMessage>,
-  'containerStyle' | 'wrapperStyle'
+  'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'
 > &
   MessageTextProps<TMessage>
 
@@ -141,6 +142,7 @@ export interface BubbleProps<TMessage extends IMessage> {
   optionTitles?: string[]
   containerStyle?: LeftRightStyle<ViewStyle>
   wrapperStyle?: LeftRightStyle<ViewStyle>
+  backgroundGradientStyle?: any,
   textStyle?: LeftRightStyle<TextStyle>
   bottomContainerStyle?: LeftRightStyle<ViewStyle>
   tickStyle?: StyleProp<TextStyle>
@@ -196,6 +198,7 @@ export default class Bubble<
     previousMessage: {},
     containerStyle: {},
     wrapperStyle: {},
+    backgroundGradientStyle: {},
     bottomContainerStyle: {},
     tickStyle: {},
     usernameStyle: {},
@@ -231,6 +234,8 @@ export default class Bubble<
     wrapperStyle: PropTypes.shape({
       left: StylePropType,
       right: StylePropType,
+    }),
+    backgroundGradientStyle: PropTypes.shape({
     }),
     bottomContainerStyle: PropTypes.shape({
       left: StylePropType,
@@ -511,6 +516,7 @@ export default class Bubble<
       containerStyle,
       wrapperStyle,
       bottomContainerStyle,
+      backgroundGradientStyle
     } = this.props
     return (
       <View
@@ -527,26 +533,34 @@ export default class Bubble<
             wrapperStyle && wrapperStyle[position],
           ]}
         >
-          <TouchableWithoutFeedback
-            onPress={this.onPress}
-            onLongPress={this.onLongPress}
-            accessibilityRole='text'
-            {...this.props.touchableProps}
-          >
-            <View>
-              {this.renderBubbleContent()}
-              <View
-                style={[
-                  styles[position].bottom,
-                  bottomContainerStyle && bottomContainerStyle[position],
-                ]}
-              >
-                {this.renderUsername()}
-                {this.renderTime()}
-                {this.renderTicks()}
+          <LinearGradient 
+            colors={
+              [
+                (backgroundGradientStyle && backgroundGradientStyle[position]) ? backgroundGradientStyle[position]!.backgroundGradientColor1 : null, 
+                (backgroundGradientStyle && backgroundGradientStyle[position]) ? backgroundGradientStyle[position]!.backgroundGradientColor2 : null
+              ]
+            }>
+            <TouchableWithoutFeedback
+              onPress={this.onPress}
+              onLongPress={this.onLongPress}
+              accessibilityRole='text'
+              {...this.props.touchableProps}
+            >
+              <View>
+                {this.renderBubbleContent()}
+                <View
+                  style={[
+                    styles[position].bottom,
+                    bottomContainerStyle && bottomContainerStyle[position],
+                  ]}
+                >
+                  {this.renderUsername()}
+                  {this.renderTime()}
+                  {this.renderTicks()}
+                </View>
               </View>
-            </View>
-          </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback>
+          </LinearGradient>
         </View>
         {this.renderQuickReplies()}
       </View>

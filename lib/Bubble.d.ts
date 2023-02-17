@@ -6,10 +6,10 @@ import { MessageTextProps } from './MessageText';
 import { MessageImageProps } from './MessageImage';
 import { TimeProps } from './Time';
 import { User, IMessage, LeftRightStyle, Reply, Omit, MessageVideoProps, MessageAudioProps } from './Models';
-export declare type RenderMessageImageProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle'> & MessageImageProps<TMessage>;
-export declare type RenderMessageVideoProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle'> & MessageVideoProps<TMessage>;
-export declare type RenderMessageAudioProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle'> & MessageAudioProps<TMessage>;
-export declare type RenderMessageTextProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle'> & MessageTextProps<TMessage>;
+export declare type RenderMessageImageProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'> & MessageImageProps<TMessage>;
+export declare type RenderMessageVideoProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'> & MessageVideoProps<TMessage>;
+export declare type RenderMessageAudioProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'> & MessageAudioProps<TMessage>;
+export declare type RenderMessageTextProps<TMessage extends IMessage> = Omit<BubbleProps<TMessage>, 'containerStyle' | 'wrapperStyle' | 'backgroundGradientStyle'> & MessageTextProps<TMessage>;
 export interface BubbleProps<TMessage extends IMessage> {
     user?: User;
     touchableProps?: object;
@@ -23,6 +23,7 @@ export interface BubbleProps<TMessage extends IMessage> {
     optionTitles?: string[];
     containerStyle?: LeftRightStyle<ViewStyle>;
     wrapperStyle?: LeftRightStyle<ViewStyle>;
+    backgroundGradientStyle?: any;
     textStyle?: LeftRightStyle<TextStyle>;
     bottomContainerStyle?: LeftRightStyle<ViewStyle>;
     tickStyle?: StyleProp<TextStyle>;
@@ -72,6 +73,7 @@ export default class Bubble<TMessage extends IMessage = IMessage> extends React.
         previousMessage: {};
         containerStyle: {};
         wrapperStyle: {};
+        backgroundGradientStyle: {};
         bottomContainerStyle: {};
         tickStyle: {};
         usernameStyle: {};
@@ -107,6 +109,7 @@ export default class Bubble<TMessage extends IMessage = IMessage> extends React.
             left: PropTypes.Requireable<number | boolean | object>;
             right: PropTypes.Requireable<number | boolean | object>;
         }>>;
+        backgroundGradientStyle: PropTypes.Requireable<PropTypes.InferProps<{}>>;
         bottomContainerStyle: PropTypes.Requireable<PropTypes.InferProps<{
             left: PropTypes.Requireable<number | boolean | object>;
             right: PropTypes.Requireable<number | boolean | object>;

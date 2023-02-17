@@ -5,9 +5,9 @@ import { useUpdateLayoutEffect } from './hooks/useUpdateLayoutEffect'
 import Color from './Color'
 
 interface Props {
-  isTyping?: boolean;
-  backgroundColor?: string;
-  dotColor?: string;
+  isTyping?: boolean
+  backgroundColor?: string
+  dotColor?: string
 }
 
 const TypingIndicator = ({ isTyping, backgroundColor, dotColor }: Props) => {
@@ -71,11 +71,14 @@ const TypingIndicator = ({ isTyping, backgroundColor, dotColor }: Props) => {
   return (
     <Animated.View
       style={[
-        {    
+        {
           marginLeft: 8,
           width: 45,
           borderRadius: 15,
-          backgroundColor: backgroundColor ? backgroundColor : Color.leftBubbleBackground,},
+          backgroundColor: backgroundColor
+            ? backgroundColor
+            : Color.leftBubbleBackground,
+        },
         {
           transform: [
             {
