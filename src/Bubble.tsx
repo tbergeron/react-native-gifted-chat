@@ -518,54 +518,51 @@ export default class Bubble<
       backgroundGradientStyle,
     } = this.props
     return (
-      <View
+      <LinearGradient
         style={[
           styles[position].container,
           containerStyle && containerStyle[position],
         ]}
+        colors={[
+          backgroundGradientStyle && backgroundGradientStyle[position]
+            ? backgroundGradientStyle[position]!.backgroundGradientColor1
+            : null,
+          backgroundGradientStyle && backgroundGradientStyle[position]
+            ? backgroundGradientStyle[position]!.backgroundGradientColor2
+            : null,
+        ]}
       >
-        <LinearGradient
-          colors={[
-            backgroundGradientStyle && backgroundGradientStyle[position]
-              ? backgroundGradientStyle[position]!.backgroundGradientColor1
-              : null,
-            backgroundGradientStyle && backgroundGradientStyle[position]
-              ? backgroundGradientStyle[position]!.backgroundGradientColor2
-              : null,
+        <View
+          style={[
+            styles[position].wrapper,
+            this.styledBubbleToNext(),
+            this.styledBubbleToPrevious(),
+            wrapperStyle && wrapperStyle[position],
           ]}
         >
-          <View
-            style={[
-              styles[position].wrapper,
-              this.styledBubbleToNext(),
-              this.styledBubbleToPrevious(),
-              wrapperStyle && wrapperStyle[position],
-            ]}
+          <TouchableWithoutFeedback
+            onPress={this.onPress}
+            onLongPress={this.onLongPress}
+            accessibilityRole='text'
+            {...this.props.touchableProps}
           >
-            <TouchableWithoutFeedback
-              onPress={this.onPress}
-              onLongPress={this.onLongPress}
-              accessibilityRole='text'
-              {...this.props.touchableProps}
-            >
-              <View>
-                {this.renderBubbleContent()}
-                <View
-                  style={[
-                    styles[position].bottom,
-                    bottomContainerStyle && bottomContainerStyle[position],
-                  ]}
-                >
-                  {this.renderUsername()}
-                  {this.renderTime()}
-                  {this.renderTicks()}
-                </View>
+            <View>
+              {this.renderBubbleContent()}
+              <View
+                style={[
+                  styles[position].bottom,
+                  bottomContainerStyle && bottomContainerStyle[position],
+                ]}
+              >
+                {this.renderUsername()}
+                {this.renderTime()}
+                {this.renderTicks()}
               </View>
-            </TouchableWithoutFeedback>
-          </View>
-        </LinearGradient>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
         {this.renderQuickReplies()}
-      </View>
+      </LinearGradient>
     )
   }
 }
