@@ -10,7 +10,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient'
 
 import { GiftedChatContext } from './GiftedChatContext'
 import { QuickReplies, QuickRepliesProps } from './QuickReplies'
@@ -142,7 +142,7 @@ export interface BubbleProps<TMessage extends IMessage> {
   optionTitles?: string[]
   containerStyle?: LeftRightStyle<ViewStyle>
   wrapperStyle?: LeftRightStyle<ViewStyle>
-  backgroundGradientStyle?: any,
+  backgroundGradientStyle?: any
   textStyle?: LeftRightStyle<TextStyle>
   bottomContainerStyle?: LeftRightStyle<ViewStyle>
   tickStyle?: StyleProp<TextStyle>
@@ -235,8 +235,7 @@ export default class Bubble<
       left: StylePropType,
       right: StylePropType,
     }),
-    backgroundGradientStyle: PropTypes.shape({
-    }),
+    backgroundGradientStyle: PropTypes.shape({}),
     bottomContainerStyle: PropTypes.shape({
       left: StylePropType,
       right: StylePropType,
@@ -516,7 +515,7 @@ export default class Bubble<
       containerStyle,
       wrapperStyle,
       bottomContainerStyle,
-      backgroundGradientStyle
+      backgroundGradientStyle,
     } = this.props
     return (
       <View
@@ -525,21 +524,24 @@ export default class Bubble<
           containerStyle && containerStyle[position],
         ]}
       >
-        <View
-          style={[
-            styles[position].wrapper,
-            this.styledBubbleToNext(),
-            this.styledBubbleToPrevious(),
-            wrapperStyle && wrapperStyle[position],
+        <LinearGradient
+          colors={[
+            backgroundGradientStyle && backgroundGradientStyle[position]
+              ? backgroundGradientStyle[position]!.backgroundGradientColor1
+              : null,
+            backgroundGradientStyle && backgroundGradientStyle[position]
+              ? backgroundGradientStyle[position]!.backgroundGradientColor2
+              : null,
           ]}
         >
-          <LinearGradient 
-            colors={
-              [
-                (backgroundGradientStyle && backgroundGradientStyle[position]) ? backgroundGradientStyle[position]!.backgroundGradientColor1 : null, 
-                (backgroundGradientStyle && backgroundGradientStyle[position]) ? backgroundGradientStyle[position]!.backgroundGradientColor2 : null
-              ]
-            }>
+          <View
+            style={[
+              styles[position].wrapper,
+              this.styledBubbleToNext(),
+              this.styledBubbleToPrevious(),
+              wrapperStyle && wrapperStyle[position],
+            ]}
+          >
             <TouchableWithoutFeedback
               onPress={this.onPress}
               onLongPress={this.onLongPress}
@@ -560,8 +562,8 @@ export default class Bubble<
                 </View>
               </View>
             </TouchableWithoutFeedback>
-          </LinearGradient>
-        </View>
+          </View>
+        </LinearGradient>
         {this.renderQuickReplies()}
       </View>
     )
