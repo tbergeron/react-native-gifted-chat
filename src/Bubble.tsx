@@ -525,6 +525,10 @@ export default class Bubble<
         ]}
       >
         <LinearGradient
+
+          start={backgroundGradientStyle[position]!.backgroundGradientStart}
+          end={backgroundGradientStyle[position]!.backgroundGradientEnd}
+
           colors={[
             backgroundGradientStyle && backgroundGradientStyle[position]
               ? backgroundGradientStyle[position]!.backgroundGradientColor1
