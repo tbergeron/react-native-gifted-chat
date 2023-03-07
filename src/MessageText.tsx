@@ -103,29 +103,30 @@ export function MessageText<TMessage extends IMessage = IMessage>({
     code_block: {
       backgroundColor: backgroundColor,
       borderRadius: 0,
-      fontSize: 14
+      fontSize: 14,
     },
     code_inline: {
-        backgroundColor: backgroundColor,
-        borderRadius: 0,
-        fontSize: 14
+      backgroundColor: backgroundColor,
+      borderRadius: 0,
+      fontSize: 14,
     },
     pre: {
-        backgroundColor: backgroundColor,
-        borderRadius: 0,
-        fontSize: 14
+      backgroundColor: backgroundColor,
+      borderRadius: 0,
+      fontSize: 14,
     },
     blockquote: {
-        backgroundColor: backgroundColor,
-        borderRadius: 0,
-        fontSize: 14
+      backgroundColor: backgroundColor,
+      borderRadius: 0,
+      fontSize: 14,
     },
     fence: {
-        backgroundColor: backgroundColor,
-        borderRadius: 0,
-        marginBottom: 10,
-        fontSize: 14
-    }
+      backgroundColor: backgroundColor,
+      borderRadius: 0,
+      marginTop: 10,
+      marginBottom: 10,
+      fontSize: 14,
+    },
   })
 
   // TODO: links aren't clickable anymore
