@@ -12,13 +12,8 @@ import {
 import Markdown from 'react-native-markdown-display'
 
 // @ts-ignore
-// import ParsedText from 'react-native-parsed-text'
 import { LeftRightStyle, IMessage } from './Models'
 import { StylePropType } from './utils'
-// import { useChatContext } from './GiftedChatContext'
-// import { error } from './logging'
-
-// const WWW_URL_PATTERN = /^wacww\./i
 
 const { textStyle } = StyleSheet.create({
   textStyle: {
@@ -56,8 +51,6 @@ const styles = {
   }),
 }
 
-// const DEFAULT_OPTION_TITLES = ['Call', 'Text', 'Cancel']
-
 export interface MessageTextProps<TMessage extends IMessage> {
   position?: 'left' | 'right'
   optionTitles?: string[]
@@ -72,14 +65,11 @@ export interface MessageTextProps<TMessage extends IMessage> {
 
 export function MessageText<TMessage extends IMessage = IMessage>({
   currentMessage = {} as TMessage,
-  // optionTitles = DEFAULT_OPTION_TITLES,
   position = 'left',
   containerStyle,
   textStyle,
-  // linkStyle: linkStyleProp,
   customTextStyle,
-}: // parsePatterns = () => [],
-// textProps,
+}:
 MessageTextProps<TMessage>) {
   // const { actionSheet } = useChatContext()
 
@@ -92,57 +82,13 @@ MessageTextProps<TMessage>) {
   //   )
   // }
 
-  // const onUrlPress = (url: string) => {
-  //   // When someone sends a message that includes a website address beginning with "www." (omitting the scheme),
-  //   // react-native-parsed-text recognizes it as a valid url, but Linking fails to open due to the missing scheme.
-  //   if (WWW_URL_PATTERN.test(url)) {
-  //     onUrlPress(`https://${url}`)
-  //   } else {
-  //     Linking.openURL(url).catch(e => {
-  //       error(e, 'No handler for URL:', url)
-  //     })
-  //   }
-  // }
-
-  // const onPhonePress = (phone: string) => {
-  //   const options =
-  //     optionTitles && optionTitles.length > 0
-  //       ? optionTitles.slice(0, 3)
-  //       : DEFAULT_OPTION_TITLES
-  //   const cancelButtonIndex = options.length - 1
-  //   actionSheet().showActionSheetWithOptions(
-  //     {
-  //       options,
-  //       cancelButtonIndex,
-  //     },
-  //     (buttonIndex: number) => {
-  //       switch (buttonIndex) {
-  //         case 0:
-  //           Linking.openURL(`tel:${phone}`).catch(e => {
-  //             error(e, 'No handler for telephone')
-  //           })
-  //           break
-  //         case 1:
-  //           Linking.openURL(`sms:${phone}`).catch(e => {
-  //             error(e, 'No handler for text')
-  //           })
-  //           break
-  //         default:
-  //           break
-  //       }
-  //     },
-  //   )
-  // }
-
-  // const onEmailPress = (email: string) =>
-  //   Linking.openURL(`mailto:${email}`).catch(e =>
-  //     error(e, 'No handler for mailto'),
-  //   )
-
-  // const linkStyle = [
-  //   styles[position].link,
-  //   linkStyleProp && linkStyleProp[position],
-  // ]
+  const onLinkPress = (url: string) => {
+    if (url) {
+      return false;
+    }
+    Linking.openURL(url);
+    return true;
+  };
 
   const mergedStyles = StyleSheet.flatten([
     styles[position].text,
@@ -150,8 +96,17 @@ MessageTextProps<TMessage>) {
     customTextStyle,
   ])
 
+  // const container: ViewStyle = containerStyle && containerStyle[position];
+  const backgroundColor = '#000000';
+
   const markdownStyles = StyleSheet.create({
     body: mergedStyles,
+    code_block: {
+      backgroundColor: backgroundColor
+    },
+    code_inline: {
+      backgroundColor: backgroundColor
+    }
   });
 
   return (
@@ -161,14 +116,7 @@ MessageTextProps<TMessage>) {
         containerStyle && containerStyle[position],
       ]}
     >
-      <Markdown
-        onLinkPress={(url: string) => {
-          Linking.openURL(url)
-          return true
-        }}
-        mergeStyle={true}
-        style={markdownStyles}
-      >
+      <Markdown onLinkPress={onLinkPress} mergeStyle={true} style={markdownStyles}>
         {currentMessage!.text}
       </Markdown>
     </View>
