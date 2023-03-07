@@ -2988,6 +2988,11 @@
   "resolved" "https://registry.npmjs.org/camelcase/-/camelcase-6.3.0.tgz"
   "version" "6.3.0"
 
+"camelize@^1.0.0":
+  "integrity" "sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ=="
+  "resolved" "https://registry.npmjs.org/camelize/-/camelize-1.0.1.tgz"
+  "version" "1.0.1"
+
 "caniuse-lite@^1.0.30001317":
   "integrity" "sha512-1/Cg4jlD9qjZzhbzkzEaAC2JHsP0WrOc8Rd/3a3LuajGzGWR/hD7TVyvq99VqmTy99eVh8Zkmdq213OgvgXx7w=="
   "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001327.tgz"
@@ -3436,6 +3441,20 @@
   "resolved" "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-2.0.0.tgz"
   "version" "2.0.0"
 
+"css-color-keywords@^1.0.0":
+  "integrity" "sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg=="
+  "resolved" "https://registry.npmjs.org/css-color-keywords/-/css-color-keywords-1.0.0.tgz"
+  "version" "1.0.0"
+
+"css-to-react-native@^3.0.0":
+  "integrity" "sha512-e8RKaLXMOFii+02mOlqwjbD00KSEKqblnpO9e++1aXS1fPQOpS1YoqdVHBqPjHNoxeF2mimzVqawm2KCbEdtHQ=="
+  "resolved" "https://registry.npmjs.org/css-to-react-native/-/css-to-react-native-3.2.0.tgz"
+  "version" "3.2.0"
+  dependencies:
+    "camelize" "^1.0.0"
+    "css-color-keywords" "^1.0.0"
+    "postcss-value-parser" "^4.0.2"
+
 "cssom@^0.4.4":
   "integrity" "sha512-p3pvU7r1MyyqbTk+WbNJIgJjG2VmTIaB10rI93LzVPrmDJKkzKYMtxxyAvQXR/NS6otuzveI7+7BBq3SjBS2mw=="
   "resolved" "https://registry.npmjs.org/cssom/-/cssom-0.4.4.tgz"
@@ -3730,6 +3749,11 @@
   "version" "1.4.4"
   dependencies:
     "once" "^1.4.0"
+
+"entities@~2.0.0":
+  "integrity" "sha512-MyoZ0jgnLvB2X3Lg5HqpFmn1kybDiIfEQmKzTb5apr51Rb+T3KdmMiqa70T+bhGnyv7bQ6WMj2QMHpGMmlrUYQ=="
+  "resolved" "https://registry.npmjs.org/entities/-/entities-2.0.3.tgz"
+  "version" "2.0.3"
 
 "env-editor@^0.4.1":
   "integrity" "sha512-ObFo8v4rQJAE59M69QzwloxPZtd33TpYEIjtKD1rrFDcM1Gd7IkDxEBU+HriziN6HSHQnBJi8Dmy+JWkav5HKA=="
@@ -6031,6 +6055,13 @@
   "resolved" "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.1.6.tgz"
   "version" "1.1.6"
 
+"linkify-it@^2.0.0":
+  "integrity" "sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw=="
+  "resolved" "https://registry.npmjs.org/linkify-it/-/linkify-it-2.2.0.tgz"
+  "version" "2.2.0"
+  dependencies:
+    "uc.micro" "^1.0.1"
+
 "locate-path@^3.0.0":
   "integrity" "sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A=="
   "resolved" "https://registry.npmjs.org/locate-path/-/locate-path-3.0.0.tgz"
@@ -6158,6 +6189,17 @@
   dependencies:
     "object-visit" "^1.0.0"
 
+"markdown-it@^10.0.0":
+  "integrity" "sha512-YWOP1j7UbDNz+TumYP1kpwnP0aEa711cJjrAQrzd0UXlbJfc5aAq0F/PZHjiioqDC1NKgvIMX+o+9Bk7yuM2dg=="
+  "resolved" "https://registry.npmjs.org/markdown-it/-/markdown-it-10.0.0.tgz"
+  "version" "10.0.0"
+  dependencies:
+    "argparse" "^1.0.7"
+    "entities" "~2.0.0"
+    "linkify-it" "^2.0.0"
+    "mdurl" "^1.0.1"
+    "uc.micro" "^1.0.5"
+
 "md5-file@^3.2.3":
   "integrity" "sha512-3Tkp1piAHaworfcCgH0jKbTvj1jWWFgbvh2cXaNCgHwyTCBxxvD1Y04rmfpvdPm1P4oXMOpm6+2H7sr7v9v8Fw=="
   "resolved" "https://registry.npmjs.org/md5-file/-/md5-file-3.2.3.tgz"
@@ -6187,6 +6229,11 @@
   "integrity" "sha512-c2YOUbp33+6thdCUi34xIyOU/a7bvGKj/3DB1iaPMTuPHf/Q2d5s4sn1FaCOO43XkXggnb08y5W2PU8UNYNLKQ=="
   "resolved" "https://registry.npmjs.org/md5hex/-/md5hex-1.0.0.tgz"
   "version" "1.0.0"
+
+"mdurl@^1.0.1":
+  "integrity" "sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g=="
+  "resolved" "https://registry.npmjs.org/mdurl/-/mdurl-1.0.1.tgz"
+  "version" "1.0.1"
 
 "media-typer@0.3.0":
   "integrity" "sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ=="
@@ -7347,6 +7394,11 @@
   "resolved" "https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz"
   "version" "0.1.1"
 
+"postcss-value-parser@^4.0.2":
+  "integrity" "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
+  "resolved" "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
+  "version" "4.2.0"
+
 "prelude-ls@^1.2.1":
   "integrity" "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g=="
   "resolved" "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
@@ -7453,7 +7505,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@*", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.7.x", "prop-types@15.7.2":
+"prop-types@*", "prop-types@^15.5.10", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.7.x", "prop-types@15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -7573,6 +7625,13 @@
   "resolved" "https://registry.npmjs.org/react-native-communications/-/react-native-communications-2.2.1.tgz"
   "version" "2.2.1"
 
+"react-native-fit-image@^1.5.5":
+  "integrity" "sha512-Wl3Vq2DQzxgsWKuW4USfck9zS7YzhvLNPpkwUUCF90bL32e1a0zOVQ3WsJILJOwzmPdHfzZmWasiiAUNBkhNkg=="
+  "resolved" "https://registry.npmjs.org/react-native-fit-image/-/react-native-fit-image-1.5.5.tgz"
+  "version" "1.5.5"
+  dependencies:
+    "prop-types" "^15.5.10"
+
 "react-native-iphone-x-helper@1.3.1":
   "integrity" "sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg=="
   "resolved" "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
@@ -7589,6 +7648,16 @@
   "version" "0.8.1"
   dependencies:
     "prop-types" "^15.7.2"
+
+"react-native-markdown-display@^7.0.0-alpha.2":
+  "integrity" "sha512-Od1a4wJEcVGwO1bh02sHivsEkKKpu99+ew/OtmVTPRmfT8V3B0aTut7k7ICV0Vej9F4ZjylRHvm28/maYUBeGw=="
+  "resolved" "https://registry.npmjs.org/react-native-markdown-display/-/react-native-markdown-display-7.0.0-alpha.2.tgz"
+  "version" "7.0.0-alpha.2"
+  dependencies:
+    "css-to-react-native" "^3.0.0"
+    "markdown-it" "^10.0.0"
+    "prop-types" "^15.7.2"
+    "react-native-fit-image" "^1.5.5"
 
 "react-native-parsed-text@*":
   "integrity" "sha512-hfD83RDXZf9Fvth3DowR7j65fMnlqM9PpxZBGWkzVcUTFtqe6/yPcIoIAgrJbKn6YmtzkivmhWE2MCE4JKBXrQ=="
@@ -7607,7 +7676,7 @@
   "resolved" "https://registry.npmjs.org/react-native-typing-animation/-/react-native-typing-animation-0.1.7.tgz"
   "version" "0.1.7"
 
-"react-native@*", "react-native@>=0.42.0", "react-native@>=0.61.0", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@0.63.4":
+"react-native@*", "react-native@>=0.42.0", "react-native@>=0.50.4", "react-native@>=0.61.0", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@0.63.4":
   "integrity" "sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.63.4.tgz"
   "version" "0.63.4"
@@ -7655,7 +7724,7 @@
     "react-is" "^16.9.0"
     "scheduler" "^0.15.0"
 
-"react@*", "react@^16.0.0", "react@^16.13.1", "react@^16.8.0 || ^17.0.0", "react@>=16.3.0", "react@>=16.8.0", "react@16.13.1":
+"react@*", "react@^16.0.0", "react@^16.13.1", "react@^16.2.0", "react@^16.8.0 || ^17.0.0", "react@>=16.3.0", "react@>=16.8.0", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
@@ -8903,6 +8972,11 @@
   "integrity" "sha512-s8ax/CeZdK9R/56Sui0WM6y9OFREJarMRHqLB2EwkovemBxNQ+Bqu8GAsUnVcXKgphb++ghr/B2BZx4mahujPw=="
   "resolved" "https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-0.7.33.tgz"
   "version" "0.7.33"
+
+"uc.micro@^1.0.1", "uc.micro@^1.0.5":
+  "integrity" "sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA=="
+  "resolved" "https://registry.npmjs.org/uc.micro/-/uc.micro-1.0.6.tgz"
+  "version" "1.0.6"
 
 "uglify-es@^3.1.9":
   "integrity" "sha512-r+MU0rfv4L/0eeW3xZrd16t4NZfK8Ld4SWVglYBb7ez5uXFWHuVRs6xCTrf1yirs9a4j4Y27nn7SRfO6v67XsQ=="

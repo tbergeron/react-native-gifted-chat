@@ -9,6 +9,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native'
+import Markdown from 'react-native-markdown-display';
 
 // @ts-ignore
 import ParsedText from 'react-native-parsed-text'
@@ -163,7 +164,9 @@ export function MessageText<TMessage extends IMessage = IMessage>({
         ]}
         childrenProps={{ ...textProps }}
       >
-        {currentMessage!.text}
+        <Markdown>
+          {currentMessage!.text}
+        </Markdown>
       </ParsedText>
     </View>
   )
