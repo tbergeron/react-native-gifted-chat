@@ -151,8 +151,8 @@ MessageTextProps<TMessage>) {
   ])
 
   const markdownStyles = StyleSheet.create({
-    mergedStyles,
-  })
+    body: mergedStyles,
+  });
 
   return (
     <View
