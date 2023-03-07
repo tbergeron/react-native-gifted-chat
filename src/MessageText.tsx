@@ -12,13 +12,13 @@ import {
 import Markdown from 'react-native-markdown-display'
 
 // @ts-ignore
-import ParsedText from 'react-native-parsed-text'
+// import ParsedText from 'react-native-parsed-text'
 import { LeftRightStyle, IMessage } from './Models'
 import { StylePropType } from './utils'
-import { useChatContext } from './GiftedChatContext'
-import { error } from './logging'
+// import { useChatContext } from './GiftedChatContext'
+// import { error } from './logging'
 
-const WWW_URL_PATTERN = /^www\./i
+// const WWW_URL_PATTERN = /^wacww\./i
 
 const { textStyle } = StyleSheet.create({
   textStyle: {
@@ -56,7 +56,7 @@ const styles = {
   }),
 }
 
-const DEFAULT_OPTION_TITLES = ['Call', 'Text', 'Cancel']
+// const DEFAULT_OPTION_TITLES = ['Call', 'Text', 'Cancel']
 
 export interface MessageTextProps<TMessage extends IMessage> {
   position?: 'left' | 'right'
@@ -72,16 +72,16 @@ export interface MessageTextProps<TMessage extends IMessage> {
 
 export function MessageText<TMessage extends IMessage = IMessage>({
   currentMessage = {} as TMessage,
-  optionTitles = DEFAULT_OPTION_TITLES,
+  // optionTitles = DEFAULT_OPTION_TITLES,
   position = 'left',
   containerStyle,
-  textStyle,
-  linkStyle: linkStyleProp,
-  customTextStyle,
-  parsePatterns = () => [],
-  textProps,
-}: MessageTextProps<TMessage>) {
-  const { actionSheet } = useChatContext()
+}: // textStyle,
+// linkStyle: linkStyleProp,
+// customTextStyle,
+// parsePatterns = () => [],
+// textProps,
+MessageTextProps<TMessage>) {
+  // const { actionSheet } = useChatContext()
 
   // TODO: React.memo
   // const shouldComponentUpdate = (nextProps: MessageTextProps<TMessage>) => {
@@ -92,57 +92,66 @@ export function MessageText<TMessage extends IMessage = IMessage>({
   //   )
   // }
 
-  const onUrlPress = (url: string) => {
-    // When someone sends a message that includes a website address beginning with "www." (omitting the scheme),
-    // react-native-parsed-text recognizes it as a valid url, but Linking fails to open due to the missing scheme.
-    if (WWW_URL_PATTERN.test(url)) {
-      onUrlPress(`https://${url}`)
-    } else {
-      Linking.openURL(url).catch(e => {
-        error(e, 'No handler for URL:', url)
-      })
-    }
-  }
+  // const onUrlPress = (url: string) => {
+  //   // When someone sends a message that includes a website address beginning with "www." (omitting the scheme),
+  //   // react-native-parsed-text recognizes it as a valid url, but Linking fails to open due to the missing scheme.
+  //   if (WWW_URL_PATTERN.test(url)) {
+  //     onUrlPress(`https://${url}`)
+  //   } else {
+  //     Linking.openURL(url).catch(e => {
+  //       error(e, 'No handler for URL:', url)
+  //     })
+  //   }
+  // }
 
-  const onPhonePress = (phone: string) => {
-    const options =
-      optionTitles && optionTitles.length > 0
-        ? optionTitles.slice(0, 3)
-        : DEFAULT_OPTION_TITLES
-    const cancelButtonIndex = options.length - 1
-    actionSheet().showActionSheetWithOptions(
-      {
-        options,
-        cancelButtonIndex,
-      },
-      (buttonIndex: number) => {
-        switch (buttonIndex) {
-          case 0:
-            Linking.openURL(`tel:${phone}`).catch(e => {
-              error(e, 'No handler for telephone')
-            })
-            break
-          case 1:
-            Linking.openURL(`sms:${phone}`).catch(e => {
-              error(e, 'No handler for text')
-            })
-            break
-          default:
-            break
-        }
-      },
-    )
-  }
+  // const onPhonePress = (phone: string) => {
+  //   const options =
+  //     optionTitles && optionTitles.length > 0
+  //       ? optionTitles.slice(0, 3)
+  //       : DEFAULT_OPTION_TITLES
+  //   const cancelButtonIndex = options.length - 1
+  //   actionSheet().showActionSheetWithOptions(
+  //     {
+  //       options,
+  //       cancelButtonIndex,
+  //     },
+  //     (buttonIndex: number) => {
+  //       switch (buttonIndex) {
+  //         case 0:
+  //           Linking.openURL(`tel:${phone}`).catch(e => {
+  //             error(e, 'No handler for telephone')
+  //           })
+  //           break
+  //         case 1:
+  //           Linking.openURL(`sms:${phone}`).catch(e => {
+  //             error(e, 'No handler for text')
+  //           })
+  //           break
+  //         default:
+  //           break
+  //       }
+  //     },
+  //   )
+  // }
 
-  const onEmailPress = (email: string) =>
-    Linking.openURL(`mailto:${email}`).catch(e =>
-      error(e, 'No handler for mailto'),
-    )
+  // const onEmailPress = (email: string) =>
+  //   Linking.openURL(`mailto:${email}`).catch(e =>
+  //     error(e, 'No handler for mailto'),
+  //   )
 
-  const linkStyle = [
-    styles[position].link,
-    linkStyleProp && linkStyleProp[position],
-  ]
+  // const linkStyle = [
+  //   styles[position].link,
+  //   linkStyleProp && linkStyleProp[position],
+  // ]
+
+  const markdownStyles = StyleSheet.create(styles[position])
+
+  //   {[
+  //   styles[position].text,
+  //   textStyle && textStyle[position],
+  //   customTextStyle,
+  // ]};
+
   return (
     <View
       style={[
@@ -150,24 +159,15 @@ export function MessageText<TMessage extends IMessage = IMessage>({
         containerStyle && containerStyle[position],
       ]}
     >
-      <ParsedText
-        style={[
-          styles[position].text,
-          textStyle && textStyle[position],
-          customTextStyle,
-        ]}
-        parse={[
-          ...parsePatterns!(linkStyle as TextStyle),
-          { type: 'url', style: linkStyle, onPress: onUrlPress },
-          { type: 'phone', style: linkStyle, onPress: onPhonePress },
-          { type: 'email', style: linkStyle, onPress: onEmailPress },
-        ]}
-        childrenProps={{ ...textProps }}
-        >
-        <Markdown>
-          {currentMessage!.text}
-        </Markdown>
-      </ParsedText>
+      <Markdown
+        onLinkPress={(url: string) => {
+          Linking.openURL(url)
+          return true
+        }}
+        style={markdownStyles}
+      >
+        {currentMessage!.text}
+      </Markdown>
     </View>
   )
 }

@@ -13,7 +13,7 @@ export interface MessageTextProps<TMessage extends IMessage> {
     customTextStyle?: StyleProp<TextStyle>;
     parsePatterns?(linkStyle: TextStyle): any;
 }
-export declare function MessageText<TMessage extends IMessage = IMessage>({ currentMessage, optionTitles, position, containerStyle, textStyle, linkStyle: linkStyleProp, customTextStyle, parsePatterns, textProps, }: MessageTextProps<TMessage>): JSX.Element;
+export declare function MessageText<TMessage extends IMessage = IMessage>({ currentMessage, position, containerStyle, }: MessageTextProps<TMessage>): JSX.Element;
 export declare namespace MessageText {
     var propTypes: {
         position: PropTypes.Requireable<string>;
