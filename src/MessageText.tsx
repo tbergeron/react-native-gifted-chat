@@ -9,7 +9,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native'
-import Markdown from 'react-native-markdown-display';
+import Markdown from 'react-native-markdown-display'
 
 // @ts-ignore
 import ParsedText from 'react-native-parsed-text'
@@ -150,24 +150,24 @@ export function MessageText<TMessage extends IMessage = IMessage>({
         containerStyle && containerStyle[position],
       ]}
     >
-      <ParsedText
-        style={[
-          styles[position].text,
-          textStyle && textStyle[position],
-          customTextStyle,
-        ]}
-        parse={[
-          ...parsePatterns!(linkStyle as TextStyle),
-          { type: 'url', style: linkStyle, onPress: onUrlPress },
-          { type: 'phone', style: linkStyle, onPress: onPhonePress },
-          { type: 'email', style: linkStyle, onPress: onEmailPress },
-        ]}
-        childrenProps={{ ...textProps }}
-      >
         <Markdown>
+          <ParsedText
+            style={[
+              styles[position].text,
+              textStyle && textStyle[position],
+              customTextStyle,
+            ]}
+            parse={[
+              ...parsePatterns!(linkStyle as TextStyle),
+              { type: 'url', style: linkStyle, onPress: onUrlPress },
+              { type: 'phone', style: linkStyle, onPress: onPhonePress },
+              { type: 'email', style: linkStyle, onPress: onEmailPress },
+            ]}
+            childrenProps={{ ...textProps }}
+          >
           {currentMessage!.text}
+          </ParsedText>
         </Markdown>
-      </ParsedText>
     </View>
   )
 }
