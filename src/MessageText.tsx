@@ -69,8 +69,7 @@ export function MessageText<TMessage extends IMessage = IMessage>({
   containerStyle,
   textStyle,
   customTextStyle,
-}:
-MessageTextProps<TMessage>) {
+}: MessageTextProps<TMessage>) {
   // const { actionSheet } = useChatContext()
 
   // TODO: React.memo
@@ -84,11 +83,11 @@ MessageTextProps<TMessage>) {
 
   const onLinkPress = (url: string) => {
     if (url) {
-      return false;
+      return false
     }
-    Linking.openURL(url);
-    return true;
-  };
+    Linking.openURL(url)
+    return true
+  }
 
   const mergedStyles = StyleSheet.flatten([
     styles[position].text,
@@ -97,18 +96,25 @@ MessageTextProps<TMessage>) {
   ])
 
   // const container: ViewStyle = containerStyle && containerStyle[position];
-  const backgroundColor = '#000000';
+  const backgroundColor = '#1F2640'
 
   const markdownStyles = StyleSheet.create({
     body: mergedStyles,
     code_block: {
-      backgroundColor: backgroundColor
+      backgroundColor: backgroundColor,
     },
     code_inline: {
-      backgroundColor: backgroundColor
-    }
-  });
+      backgroundColor: backgroundColor,
+    },
+    pre: {
+      backgroundColor: backgroundColor,
+    },
+    blockquote: {
+      backgroundColor: backgroundColor,
+    },
+  })
 
+  // TODO: links aren't clickable anymore
   return (
     <View
       style={[
@@ -116,7 +122,11 @@ MessageTextProps<TMessage>) {
         containerStyle && containerStyle[position],
       ]}
     >
-      <Markdown onLinkPress={onLinkPress} mergeStyle={true} style={markdownStyles}>
+      <Markdown
+        onLinkPress={onLinkPress}
+        mergeStyle={true}
+        style={markdownStyles}
+      >
         {currentMessage!.text}
       </Markdown>
     </View>
