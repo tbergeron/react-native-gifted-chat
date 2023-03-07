@@ -75,10 +75,10 @@ export function MessageText<TMessage extends IMessage = IMessage>({
   // optionTitles = DEFAULT_OPTION_TITLES,
   position = 'left',
   containerStyle,
-}: // textStyle,
-// linkStyle: linkStyleProp,
-// customTextStyle,
-// parsePatterns = () => [],
+  textStyle,
+  // linkStyle: linkStyleProp,
+  customTextStyle,
+}: // parsePatterns = () => [],
 // textProps,
 MessageTextProps<TMessage>) {
   // const { actionSheet } = useChatContext()
@@ -144,23 +144,15 @@ MessageTextProps<TMessage>) {
   //   linkStyleProp && linkStyleProp[position],
   // ]
 
-  const fontSizeOverride  = undefined;
-  const colorOverride     = undefined;
-  const fontStyleOverride = undefined;
+  const mergedStyles = StyleSheet.flatten([
+    styles[position].text,
+    textStyle && textStyle[position],
+    customTextStyle,
+  ])
 
   const markdownStyles = StyleSheet.create({
-    body: {
-      fontSize : (fontSizeOverride) ? fontSizeOverride: styles[position].text.fontSize,
-      color    : (colorOverride) ? colorOverride      : styles[position].text.color,
-      fontStyle: fontStyleOverride
-    }
-  });
-
-  //   {[
-  //   styles[position].text,
-  //   textStyle && textStyle[position],
-  //   customTextStyle,
-  // ]};
+    mergedStyles,
+  })
 
   return (
     <View
