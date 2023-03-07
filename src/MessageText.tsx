@@ -112,6 +112,9 @@ export function MessageText<TMessage extends IMessage = IMessage>({
     blockquote: {
       backgroundColor: backgroundColor,
     },
+    fence: {
+      backgroundColor: backgroundColor,
+    }
   })
 
   // TODO: links aren't clickable anymore
