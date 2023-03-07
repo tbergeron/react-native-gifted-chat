@@ -102,18 +102,29 @@ export function MessageText<TMessage extends IMessage = IMessage>({
     body: mergedStyles,
     code_block: {
       backgroundColor: backgroundColor,
+      borderRadius: 0,
+      fontSize: 14
     },
     code_inline: {
-      backgroundColor: backgroundColor,
+        backgroundColor: backgroundColor,
+        borderRadius: 0,
+        fontSize: 14
     },
     pre: {
-      backgroundColor: backgroundColor,
+        backgroundColor: backgroundColor,
+        borderRadius: 0,
+        fontSize: 14
     },
     blockquote: {
-      backgroundColor: backgroundColor,
+        backgroundColor: backgroundColor,
+        borderRadius: 0,
+        fontSize: 14
     },
     fence: {
-      backgroundColor: backgroundColor,
+        backgroundColor: backgroundColor,
+        borderRadius: 0,
+        marginBottom: 10,
+        fontSize: 14
     }
   })
 
