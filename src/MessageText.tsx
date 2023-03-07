@@ -144,7 +144,17 @@ MessageTextProps<TMessage>) {
   //   linkStyleProp && linkStyleProp[position],
   // ]
 
-  const markdownStyles = StyleSheet.create(styles[position])
+  const fontSizeOverride  = undefined;
+  const colorOverride     = undefined;
+  const fontStyleOverride = undefined;
+
+  const markdownStyles = StyleSheet.create({
+    body: {
+      fontSize : (fontSizeOverride) ? fontSizeOverride: styles[position].text.fontSize,
+      color    : (colorOverride) ? colorOverride      : styles[position].text.color,
+      fontStyle: fontStyleOverride
+    }
+  });
 
   //   {[
   //   styles[position].text,
@@ -164,6 +174,7 @@ MessageTextProps<TMessage>) {
           Linking.openURL(url)
           return true
         }}
+        mergeStyle={true}
         style={markdownStyles}
       >
         {currentMessage!.text}
