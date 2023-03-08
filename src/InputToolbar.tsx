@@ -37,7 +37,8 @@ export interface InputToolbarProps<TMessage extends IMessage> {
   renderActions?(props: ActionsProps): React.ReactNode
   renderSend?(props: SendProps<TMessage>): React.ReactNode
   renderComposer?(props: ComposerProps): React.ReactNode
-  onPressActionButton?(): void
+  onPressActionButton?(): void,
+  setComposerHeight(height: number): void
 }
 
 export function InputToolbar<TMessage extends IMessage = IMessage>(
@@ -94,4 +95,5 @@ InputToolbar.propTypes = {
   containerStyle: StylePropType,
   primaryStyle: StylePropType,
   accessoryStyle: StylePropType,
+  setComposerHeight: PropTypes.func,
 }

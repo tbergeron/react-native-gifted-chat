@@ -18,6 +18,7 @@ export interface InputToolbarProps<TMessage extends IMessage> {
     renderSend?(props: SendProps<TMessage>): React.ReactNode;
     renderComposer?(props: ComposerProps): React.ReactNode;
     onPressActionButton?(): void;
+    setComposerHeight(height: number): void;
 }
 export declare function InputToolbar<TMessage extends IMessage = IMessage>(props: InputToolbarProps<TMessage>): JSX.Element;
 export declare namespace InputToolbar {
@@ -30,5 +31,6 @@ export declare namespace InputToolbar {
         containerStyle: PropTypes.Requireable<number | boolean | object>;
         primaryStyle: PropTypes.Requireable<number | boolean | object>;
         accessoryStyle: PropTypes.Requireable<number | boolean | object>;
+        setComposerHeight: PropTypes.Requireable<(...args: any[]) => any>;
     };
 }

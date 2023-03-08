@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
 })
 
 export interface ComposerProps {
-  composerHeight?: number
   text?: string
   placeholder?: string
   placeholderTextColor?: string
@@ -43,10 +42,10 @@ export interface ComposerProps {
   disableComposer?: boolean
   onTextChanged?(text: string): void
   onInputSizeChanged?(layout: { width: number; height: number }): void
+  setComposerHeight(height: number): void
 }
 
 export function Composer({
-  composerHeight,
   disableComposer = false,
   keyboardAppearance = 'default',
   multiline = true,
@@ -57,6 +56,7 @@ export function Composer({
   textInputAutoFocus = false,
   textInputProps = {},
   textInputStyle,
+  setComposerHeight = () => {}
 }: ComposerProps): React.ReactElement {
   return (
     <TextInput
@@ -68,9 +68,8 @@ export function Composer({
       multiline={multiline}
       editable={!disableComposer}
       onChangeText={onTextChanged}
-      onContentSizeChange={(event) => {
-        composerHeight = event.nativeEvent.contentSize.height;
-        console.log('height is now', composerHeight);
+      onContentSizeChange={event => {
+        setComposerHeight(event.nativeEvent.contentSize.height);
       }}
       style={[
         styles.textInput,
@@ -97,6 +96,7 @@ export function Composer({
 }
 
 Composer.propTypes = {
+  setComposerHeight: PropTypes.func,
   composerHeight: PropTypes.number,
   text: PropTypes.string,
   placeholder: PropTypes.string,

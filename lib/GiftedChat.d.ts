@@ -273,6 +273,7 @@ declare class GiftedChat<TMessage extends IMessage = IMessage> extends React.Com
     componentDidMount(): void;
     componentWillUnmount(): void;
     componentDidUpdate(prevProps?: GiftedChatProps<TMessage>): void;
+    setComposerHeight(height: number): void;
     initLocale(): void;
     setLocale(locale: string): void;
     getLocale: () => string;
