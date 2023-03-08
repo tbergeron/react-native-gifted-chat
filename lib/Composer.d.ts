@@ -18,7 +18,7 @@ export interface ComposerProps {
         height: number;
     }): void;
 }
-export declare function Composer({ disableComposer, keyboardAppearance, multiline, onTextChanged, placeholder, placeholderTextColor, text, textInputAutoFocus, textInputProps, textInputStyle, }: ComposerProps): React.ReactElement;
+export declare function Composer({ composerHeight, disableComposer, keyboardAppearance, multiline, onTextChanged, placeholder, placeholderTextColor, text, textInputAutoFocus, textInputProps, textInputStyle, }: ComposerProps): React.ReactElement;
 export declare namespace Composer {
     var propTypes: {
         composerHeight: PropTypes.Requireable<number>;

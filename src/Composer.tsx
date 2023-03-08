@@ -1,11 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import {
-  Platform,
-  StyleSheet,
-  TextInput,
-  TextInputProps,
-} from 'react-native'
+import { Platform, StyleSheet, TextInput, TextInputProps } from 'react-native'
 import { DEFAULT_PLACEHOLDER } from './Constant'
 import Color from './Color'
 import { StylePropType } from './utils'
@@ -51,6 +46,7 @@ export interface ComposerProps {
 }
 
 export function Composer({
+  composerHeight,
   disableComposer = false,
   keyboardAppearance = 'default',
   multiline = true,
@@ -62,7 +58,6 @@ export function Composer({
   textInputProps = {},
   textInputStyle,
 }: ComposerProps): React.ReactElement {
-
   return (
     <TextInput
       testID={placeholder}
@@ -73,6 +68,10 @@ export function Composer({
       multiline={multiline}
       editable={!disableComposer}
       onChangeText={onTextChanged}
+      onContentSizeChange={(event) => {
+        composerHeight = event.nativeEvent.contentSize.height;
+        console.log('height is now', composerHeight);
+      }}
       style={[
         styles.textInput,
         textInputStyle,
