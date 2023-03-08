@@ -42,7 +42,6 @@ export interface ComposerProps {
   disableComposer?: boolean
   onTextChanged?(text: string): void
   onInputSizeChanged?(layout: { width: number; height: number }): void
-  setComposerHeight(height: number): void
 }
 
 export function Composer({
@@ -56,7 +55,7 @@ export function Composer({
   textInputAutoFocus = false,
   textInputProps = {},
   textInputStyle,
-  setComposerHeight = () => {}
+  onInputSizeChanged = () => {},
 }: ComposerProps): React.ReactElement {
   return (
     <TextInput
@@ -69,7 +68,7 @@ export function Composer({
       editable={!disableComposer}
       onChangeText={onTextChanged}
       onContentSizeChange={event => {
-        setComposerHeight(event.nativeEvent.contentSize.height);
+        onInputSizeChanged(event.nativeEvent.contentSize);
       }}
       style={[
         styles.textInput,
@@ -96,7 +95,6 @@ export function Composer({
 }
 
 Composer.propTypes = {
-  setComposerHeight: PropTypes.func,
   composerHeight: PropTypes.number,
   text: PropTypes.string,
   placeholder: PropTypes.string,

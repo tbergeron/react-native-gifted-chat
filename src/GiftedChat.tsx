@@ -468,11 +468,6 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     }
   }
 
-  setComposerHeight(height: number) {
-    console.log('height is now', height)
-    this.setState({ composerHeight: height })
-  }
-
   initLocale() {
     if (this.props.locale === null) {
       this.setLocale('en')
@@ -852,8 +847,7 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
       composerHeight: Math.max(
         this.props.minComposerHeight!,
         this.state.composerHeight!,
-        ),
-      setComposerHeight: this.setComposerHeight,
+      ),
       onSend: this.onSend,
       onInputSizeChanged: this.onInputSizeChanged,
       onTextChanged: this.onInputTextChanged,

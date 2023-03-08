@@ -16,12 +16,10 @@ export interface ComposerProps {
         width: number;
         height: number;
     }): void;
-    setComposerHeight(height: number): void;
 }
-export declare function Composer({ disableComposer, keyboardAppearance, multiline, onTextChanged, placeholder, placeholderTextColor, text, textInputAutoFocus, textInputProps, textInputStyle, setComposerHeight }: ComposerProps): React.ReactElement;
+export declare function Composer({ disableComposer, keyboardAppearance, multiline, onTextChanged, placeholder, placeholderTextColor, text, textInputAutoFocus, textInputProps, textInputStyle, onInputSizeChanged, }: ComposerProps): React.ReactElement;
 export declare namespace Composer {
     var propTypes: {
-        setComposerHeight: PropTypes.Requireable<(...args: any[]) => any>;
         composerHeight: PropTypes.Requireable<number>;
         text: PropTypes.Requireable<string>;
         placeholder: PropTypes.Requireable<string>;
