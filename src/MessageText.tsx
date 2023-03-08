@@ -121,6 +121,14 @@ export function MessageText<TMessage extends IMessage = IMessage>({
     tr: {
       borderColor: '#fff',
     },
+    ordered_list: {
+      marginTop: 8,
+      marginBottom: 10
+    },
+    bullet_list: {
+      marginTop: 8,
+      marginBottom: 10
+    },
   })
 
   // TODO: links aren't clickable anymore
