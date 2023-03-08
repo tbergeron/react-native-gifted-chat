@@ -1,17 +1,14 @@
 import PropTypes from 'prop-types'
-import React, { useRef } from 'react'
+import React from 'react'
 import {
   Platform,
   StyleSheet,
   TextInput,
   TextInputProps,
-  NativeSyntheticEvent,
-  TextInputContentSizeChangeEventData,
 } from 'react-native'
-import { MIN_COMPOSER_HEIGHT, DEFAULT_PLACEHOLDER } from './Constant'
+import { DEFAULT_PLACEHOLDER } from './Constant'
 import Color from './Color'
 import { StylePropType } from './utils'
-import { useCallbackOne } from 'use-memo-one'
 
 const styles = StyleSheet.create({
   textInput: {
@@ -54,11 +51,9 @@ export interface ComposerProps {
 }
 
 export function Composer({
-  composerHeight = MIN_COMPOSER_HEIGHT,
   disableComposer = false,
   keyboardAppearance = 'default',
   multiline = true,
-  onInputSizeChanged = () => {},
   onTextChanged = () => {},
   placeholder = DEFAULT_PLACEHOLDER,
   placeholderTextColor = Color.defaultColor,
@@ -67,33 +62,6 @@ export function Composer({
   textInputProps = {},
   textInputStyle,
 }: ComposerProps): React.ReactElement {
-  const dimensionsRef = useRef<{ width: number; height: number }>()
-
-  const determineInputSizeChange = useCallbackOne(
-    (dimensions: { width: number; height: number }) => {
-      // Support earlier versions of React Native on Android.
-      if (!dimensions) {
-        return
-      }
-
-      if (
-        !dimensionsRef ||
-        !dimensionsRef.current ||
-        (dimensionsRef.current &&
-          (dimensionsRef.current.width !== dimensions.width ||
-            dimensionsRef.current.height !== dimensions.height))
-      ) {
-        dimensionsRef.current = dimensions
-        onInputSizeChanged(dimensions)
-      }
-    },
-    [onInputSizeChanged],
-  )
-
-  const handleContentSizeChange = ({
-    nativeEvent: { contentSize },
-  }: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) =>
-    determineInputSizeChange(contentSize)
 
   return (
     <TextInput
@@ -104,13 +72,11 @@ export function Composer({
       placeholderTextColor={placeholderTextColor}
       multiline={multiline}
       editable={!disableComposer}
-      onContentSizeChange={handleContentSizeChange}
       onChangeText={onTextChanged}
       style={[
         styles.textInput,
         textInputStyle,
         {
-          height: composerHeight,
           paddingBottom: 15,
           ...Platform.select({
             web: {

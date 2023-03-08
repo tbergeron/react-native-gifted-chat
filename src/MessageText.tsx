@@ -101,26 +101,26 @@ export function MessageText<TMessage extends IMessage = IMessage>({
   const markdownStyles = StyleSheet.create({
     body: mergedStyles,
     code_inline: {
-        backgroundColor: backgroundColor,
+      backgroundColor: backgroundColor,
     },
     fence: {
-        backgroundColor: backgroundColor,
-        borderRadius: 0,
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 14,
+      backgroundColor: backgroundColor,
+      borderRadius: 0,
+      marginTop: 10,
+      marginBottom: 10,
+      fontSize: 14,
     },
     table: {
-        backgroundColor: backgroundColor,
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 14,
-        borderBottomWidth: 1,
-        borderColor: '#fff',
+      backgroundColor: backgroundColor,
+      marginTop: 10,
+      marginBottom: 10,
+      fontSize: 14,
+      borderBottomWidth: 1,
+      borderColor: '#fff',
     },
     tr: {
-        borderColor: '#fff',
-    }
+      borderColor: '#fff',
+    },
   })
 
   // TODO: links aren't clickable anymore
