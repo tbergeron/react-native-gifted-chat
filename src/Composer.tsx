@@ -68,7 +68,7 @@ export function Composer({
       editable={!disableComposer}
       onChangeText={onTextChanged}
       onContentSizeChange={event => {
-        onInputSizeChanged(event.nativeEvent.contentSize);
+        onInputSizeChanged(event.nativeEvent.contentSize)
       }}
       style={[
         styles.textInput,
