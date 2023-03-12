@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
+  Pressable,
   View,
   StyleProp,
   ViewStyle,
   TextStyle,
-  TouchableOpacityProps,
+  PressableProps,
 } from 'react-native'
 import { useMemoOne } from 'use-memo-one'
 
@@ -41,7 +41,7 @@ export interface SendProps<TMessage extends IMessage> {
   children?: React.ReactNode
   alwaysShowSend?: boolean
   disabled?: boolean
-  sendButtonProps?: Partial<TouchableOpacityProps>
+  sendButtonProps?: Partial<PressableProps>
   onSend?(
     messages: Partial<TMessage> | Partial<TMessage>[],
     shouldResetInputToolbar: boolean,
@@ -59,7 +59,8 @@ export const Send = <TMessage extends IMessage = IMessage>({
   sendButtonProps,
   onSend = () => {},
 }: SendProps<TMessage>) => {
-  const handleOnPress = () => onSend({ text: text.trim() } as Partial<TMessage>, false)
+  const handleOnPress = () =>
+    onSend({ text: text.trim() } as Partial<TMessage>, false)
   const showSend = useMemoOne(
     () => alwaysShowSend || (text && text.trim().length > 0),
     [alwaysShowSend, text],
@@ -70,7 +71,7 @@ export const Send = <TMessage extends IMessage = IMessage>({
   }
 
   return (
-    <TouchableOpacity
+    <Pressable
       testID={TEST_ID.SEND_TOUCHABLE}
       accessible
       accessibilityLabel='send'
@@ -83,7 +84,7 @@ export const Send = <TMessage extends IMessage = IMessage>({
       <View>
         {children || <Text style={[styles.text, textStyle]}>{label}</Text>}
       </View>
-    </TouchableOpacity>
+    </Pressable>
   )
 }
 
