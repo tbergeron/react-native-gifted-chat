@@ -10,7 +10,7 @@ import {
   TextStyle,
   TouchableOpacityProps,
 } from 'react-native'
-import { useCallbackOne, useMemoOne } from 'use-memo-one'
+import { useMemoOne } from 'use-memo-one'
 
 import Color from './Color'
 import { IMessage } from './Models'
@@ -59,12 +59,7 @@ export const Send = <TMessage extends IMessage = IMessage>({
   sendButtonProps,
   onSend = () => {},
 }: SendProps<TMessage>) => {
-  const handleOnPress = useCallbackOne(() => {
-    if (text && onSend) {
-      onSend({ text: text.trim() } as Partial<TMessage>, false)
-    }
-  }, [text, onSend])
-
+  const handleOnPress = () => onSend({ text: text.trim() } as Partial<TMessage>, false)
   const showSend = useMemoOne(
     () => alwaysShowSend || (text && text.trim().length > 0),
     [alwaysShowSend, text],

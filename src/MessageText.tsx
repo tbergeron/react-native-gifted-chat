@@ -110,7 +110,7 @@ export function MessageText<TMessage extends IMessage = IMessage>({
       marginTop: 10,
       marginBottom: 10,
       fontSize: 14,
-      width: Dimensions.get('screen').width-100
+      width: Dimensions.get('screen').width - 100,
     },
     table: {
       backgroundColor: backgroundColor,
@@ -119,7 +119,7 @@ export function MessageText<TMessage extends IMessage = IMessage>({
       fontSize: 14,
       borderBottomWidth: 1,
       borderColor: '#fff',
-      width: Dimensions.get('screen').width-100
+      width: Dimensions.get('screen').width - 100,
     },
     tr: {
       borderColor: '#fff',
@@ -127,14 +127,14 @@ export function MessageText<TMessage extends IMessage = IMessage>({
     ordered_list: {
       marginTop: 8,
       marginBottom: 10,
-      width: Dimensions.get('screen').width-100
+      width: Dimensions.get('screen').width - 100,
     },
     bullet_list: {
       marginTop: 8,
       marginBottom: 10,
-      width: Dimensions.get('screen').width-100
+      width: Dimensions.get('screen').width - 100,
     },
-    })
+  })
 
   // TODO: links aren't clickable anymore
   return (
