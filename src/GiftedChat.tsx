@@ -447,7 +447,7 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
       actionSheet:
         this.props.actionSheet ||
         (() => this._actionSheetRef.current?.getContext()!),
-      getLocale: this,
+      getLocale: this.getLocale
     })
   }
 
