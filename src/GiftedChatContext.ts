@@ -1,11 +1,7 @@
 import * as React from 'react'
 
-export interface IGiftedChatContext {
-  value: any
-}
+export interface IGiftedChatContext {}
 
-export const GiftedChatContext = React.createContext<any>({
-  value: {}
-})
+export const GiftedChatContext = React.createContext<any>({})
 
 export const useChatContext = () => React.useContext(GiftedChatContext)

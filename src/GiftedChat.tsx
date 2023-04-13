@@ -421,7 +421,7 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     typingDisabled: false,
     text: undefined,
     messages: undefined,
-    contextValues:{},
+    contextValues: {},
   }
 
   constructor(props: GiftedChatProps<TMessage>) {
@@ -444,9 +444,10 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     this.setMessages(messages || [])
     this.setTextFromProp(text)
     this.setContextValues({
-      actionSheet: this.props.actionSheet ||
-      (() => this._actionSheetRef.current?.getContext()!),
-      getLocale: this
+      actionSheet:
+        this.props.actionSheet ||
+        (() => this._actionSheetRef.current?.getContext()!),
+      getLocale: this,
     })
   }
 
@@ -516,7 +517,7 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
   }
 
   getContextValues() {
-    return this.state.contextValues;
+    return this.state.contextValues
   }
 
   setMaxHeight(height: number) {
@@ -896,8 +897,9 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     if (this.state.isInitialized === true) {
       const { wrapInSafeArea } = this.props
       const Wrapper = wrapInSafeArea ? SafeAreaView : View
-      return (<GiftedChatContext.Provider value={this.getContextValues()}>
-        <Wrapper testID={TEST_ID.WRAPPER} style={styles.safeArea}>
+      return (
+        <GiftedChatContext.Provider value={this.getContextValues()}>
+          <Wrapper testID={TEST_ID.WRAPPER} style={styles.safeArea}>
             <ActionSheetProvider ref={this._actionSheetRef}>
               <View style={styles.container} onLayout={this.onMainViewLayout}>
                 {this.renderMessages()}
