@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import {
   StyleSheet,
   Text,
-  Pressable,
   View,
   StyleProp,
   ViewStyle,
   TextStyle,
-  PressableProps,
+  TouchableOpacityProps,
+  TouchableOpacity,
 } from 'react-native'
 import { useMemoOne } from 'use-memo-one'
 
@@ -41,7 +41,7 @@ export interface SendProps<TMessage extends IMessage> {
   children?: React.ReactNode
   alwaysShowSend?: boolean
   disabled?: boolean
-  sendButtonProps?: Partial<PressableProps>
+  sendButtonProps?: Partial<TouchableOpacityProps>
   onSend?(
     messages: Partial<TMessage> | Partial<TMessage>[],
     shouldResetInputToolbar: boolean,
@@ -71,7 +71,7 @@ export const Send = <TMessage extends IMessage = IMessage>({
   }
 
   return (
-    <Pressable
+    <TouchableOpacity
       testID={TEST_ID.SEND_TOUCHABLE}
       accessible
       accessibilityLabel='send'
@@ -84,7 +84,7 @@ export const Send = <TMessage extends IMessage = IMessage>({
       <View>
         {children || <Text style={[styles.text, textStyle]}>{label}</Text>}
       </View>
-    </Pressable>
+    </TouchableOpacity>
   )
 }
 

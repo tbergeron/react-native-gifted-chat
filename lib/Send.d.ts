@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { StyleProp, ViewStyle, TextStyle, PressableProps } from 'react-native';
+import { StyleProp, ViewStyle, TextStyle, TouchableOpacityProps } from 'react-native';
 import { IMessage } from './Models';
 export interface SendProps<TMessage extends IMessage> {
     text?: string;
@@ -10,7 +10,7 @@ export interface SendProps<TMessage extends IMessage> {
     children?: React.ReactNode;
     alwaysShowSend?: boolean;
     disabled?: boolean;
-    sendButtonProps?: Partial<PressableProps>;
+    sendButtonProps?: Partial<TouchableOpacityProps>;
     onSend?(messages: Partial<TMessage> | Partial<TMessage>[], shouldResetInputToolbar: boolean): void;
 }
 export declare const Send: {
