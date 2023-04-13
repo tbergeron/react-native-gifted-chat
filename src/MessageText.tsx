@@ -71,7 +71,6 @@ export function MessageText<TMessage extends IMessage = IMessage>({
   textStyle,
   customTextStyle,
 }: MessageTextProps<TMessage>) {
-
   // TODO: React.memo
   // const shouldComponentUpdate = (nextProps: MessageTextProps<TMessage>) => {
   //   return (

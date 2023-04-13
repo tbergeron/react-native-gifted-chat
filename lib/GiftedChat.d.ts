@@ -117,6 +117,7 @@ export interface GiftedChatState<TMessage extends IMessage = IMessage> {
     typingDisabled: boolean;
     text?: string;
     messages?: TMessage[];
+    contextValues: any;
 }
 declare class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<GiftedChatProps<TMessage>, GiftedChatState> {
     static defaultProps: {
@@ -268,6 +269,7 @@ declare class GiftedChat<TMessage extends IMessage = IMessage> extends React.Com
         typingDisabled: boolean;
         text: undefined;
         messages: undefined;
+        contextValues: {};
     };
     constructor(props: GiftedChatProps<TMessage>);
     componentDidMount(): void;
@@ -280,6 +282,8 @@ declare class GiftedChat<TMessage extends IMessage = IMessage> extends React.Com
     getTextFromProp(fallback: string): string;
     setMessages(messages: TMessage[]): void;
     getMessages(): undefined;
+    setContextValues(values: any): void;
+    getContextValues(): {};
     setMaxHeight(height: number): void;
     getMaxHeight(): number | undefined;
     setKeyboardHeight(height: number): void;

@@ -1,9 +1,6 @@
 import * as React from 'react';
 export interface IGiftedChatContext {
-    actionSheet(): {
-        showActionSheetWithOptions: (option?: any, cb?: any) => any;
-    };
-    getLocale(): string;
+    value: any;
 }
-export declare const GiftedChatContext: React.Context<IGiftedChatContext>;
-export declare const useChatContext: () => IGiftedChatContext;
+export declare const GiftedChatContext: React.Context<any>;
+export declare const useChatContext: () => any;

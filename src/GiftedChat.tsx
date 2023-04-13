@@ -234,6 +234,7 @@ export interface GiftedChatState<TMessage extends IMessage = IMessage> {
   typingDisabled: boolean
   text?: string
   messages?: TMessage[]
+  contextValues: any
 }
 
 class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
@@ -420,6 +421,7 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     typingDisabled: false,
     text: undefined,
     messages: undefined,
+    contextValues:{},
   }
 
   constructor(props: GiftedChatProps<TMessage>) {
@@ -441,6 +443,11 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     this.initLocale()
     this.setMessages(messages || [])
     this.setTextFromProp(text)
+    this.setContextValues({
+      actionSheet: this.props.actionSheet ||
+      (() => this._actionSheetRef.current?.getContext()!),
+      getLocale: this
+    })
   }
 
   componentWillUnmount() {
@@ -502,6 +509,14 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
 
   getMessages() {
     return this.state.messages
+  }
+
+  setContextValues(values: any) {
+    this.setState({ contextValues: values })
+  }
+
+  getContextValues() {
+    return this.state.contextValues;
   }
 
   setMaxHeight(height: number) {
@@ -881,18 +896,8 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     if (this.state.isInitialized === true) {
       const { wrapInSafeArea } = this.props
       const Wrapper = wrapInSafeArea ? SafeAreaView : View
-      const actionSheet =
-        this.props.actionSheet ||
-        (() => this._actionSheetRef.current?.getContext()!)
-      const { getLocale } = this
-      return (
-        <GiftedChatContext.Provider
-          value={{
-            actionSheet,
-            getLocale,
-          }}
-        >
-          <Wrapper testID={TEST_ID.WRAPPER} style={styles.safeArea}>
+      return (<GiftedChatContext.Provider value={this.getContextValues()}>
+        <Wrapper testID={TEST_ID.WRAPPER} style={styles.safeArea}>
             <ActionSheetProvider ref={this._actionSheetRef}>
               <View style={styles.container} onLayout={this.onMainViewLayout}>
                 {this.renderMessages()}
